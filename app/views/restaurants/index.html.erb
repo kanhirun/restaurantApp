@@ -1,1 +1,10 @@
 <h1>Restaurant index</h1>
+
+<ol>
+  <% @restaurants.each do |restaurant| %>
+    <li>
+      <%= link_to "#{restaurant.name}", restaurant_path(restaurant) %>
+      <%= link_to "Edit", edit_restaurant_path(restaurant) %>
+    </li>
+  <% end %>
+</ol>
