@@ -5,7 +5,13 @@ class RestaurantsController < ApplicationController
 
 
   def show
-    @restaurant = Restaurant.find(params[:id])
+    @restaurant = Restaurant.find_by(id: params[:id])
+
+    if @restaurant
+      redirect_to action: :show
+    else
+      redirect_to action: :index
+    end
   end
 
 
@@ -31,7 +37,13 @@ class RestaurantsController < ApplicationController
 
 
   def edit
-    @restaurant = Restaurant.find(params[:id])
+    @restaurant = Restaurant.find_by(id: params[:id])
+
+    if @restaurant
+      redirect_to action: :show
+    else
+      redirect_to action: :index
+    end
   end
 
 
