@@ -21,16 +21,10 @@ class RestaurantsController < ApplicationController
 
 
   def create
-    @restaurant = Restaurant.new(
-      name:         params[:restaurant][:name],
-      description:  params[:restaurant][:description],
-      address_1:    params[:restaurant][:address_1],
-      address_2:    params[:restaurant][:address_2],
-      phone_number: params[:restaurant][:phone_number]
-    )
+    @restaurant = Restaurant.new(restaurant_params)
 
     if @restaurant.save
-      redirect_to action: :show
+      render action: :show
     else
       redirect_to action: :new
     end
@@ -66,4 +60,9 @@ class RestaurantsController < ApplicationController
 
     redirect_to :index
   end
+
+  private
+    def restaurant_params
+      params.require(:restaurant).permit(:name)
+    end
 end
