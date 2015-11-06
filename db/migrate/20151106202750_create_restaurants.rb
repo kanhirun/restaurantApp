@@ -1,0 +1,13 @@
+class CreateRestaurants < ActiveRecord::Migration
+  def change
+    create_table :restaurants do |t|
+      t.string :name
+      t.text :description
+      t.string :address_1
+      t.string :address_2
+      t.string :phone_number  # (123)456-7890, 123 456 7890, ...
+
+      t.timestamps null: false
+    end
+  end
+end
