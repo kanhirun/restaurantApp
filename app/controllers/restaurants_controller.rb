@@ -16,16 +16,17 @@ class RestaurantsController < ApplicationController
 
 
   def new
+    @restaurant = Restaurant.new
   end
 
 
   def create
     @restaurant = Restaurant.new(
-      name:         params[:name],
-      description:  params[:description],
-      address_1:    params[:address_1],
-      address_2:    params[:address_2],
-      phone_number: params[:phone_number]
+      name:         params[:restaurant][:name],
+      description:  params[:restaurant][:description],
+      address_1:    params[:restaurant][:address_1],
+      address_2:    params[:restaurant][:address_2],
+      phone_number: params[:restaurant][:phone_number]
     )
 
     if @restaurant.save
